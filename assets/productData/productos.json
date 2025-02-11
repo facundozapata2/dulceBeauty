@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "nombre": "Perfume Flor de Cerezo",
+        "categoria": "perfumes",
+        "imagen": "images/perfume1.jpg",
+        "descripcion": "Un perfume fresco y floral."
+    },
+    {
+        "id": 2,
+        "nombre": "Crema Hidratante",
+        "categoria": "cosmeticos",
+        "imagen": "images/crema1.jpg",
+        "descripcion": "Hidratación profunda para tu piel."
+    },
+    {
+        "id": 3,
+        "nombre": "Perfume Noche de Verano",
+        "categoria": "perfumes",
+        "imagen": "images/perfume2.jpg",
+        "descripcion": "Un aroma intenso y seductor."
+    },
+    {
+        "id": 4,
+        "nombre": "Labial Mate",
+        "categoria": "cosmeticos",
+        "imagen": "images/labial1.jpg",
+        "descripcion": "Labial de larga duración."
+    },
+    {
+        "id": 5,
+        "nombre": "Perfume Oferta Especial",
+        "categoria": "ofertas",
+        "imagen": "images/perfume3.jpg",
+        "descripcion": "Oferta limitada en perfumes."
+    }
+]
