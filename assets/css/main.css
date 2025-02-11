@@ -468,7 +468,6 @@ h1{
     padding: .5rem;
     border-radius: 50%;
     transition: background .3s ease-in-out , color .3s ease-in-out, transform .3s ease-in-out, box-shadow .3s ease-in-out;
-
 }
 
 .footer__social-media i:hover,
