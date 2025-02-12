@@ -9,16 +9,17 @@
     <title>Dulce Beauty</title>
 </head>
 <body>
-    
+
 <div class="wrapper">
 
     <header class="main-header" id="mainHeader">
         <div class="brand">
-            <img src="./assets/images/logo/header_logo.png" alt="Logo">
+            <img src="./assets/images/logo/header_logo_1.webp" alt="Logo">
             <h1>Dulce Beauty</h1>
         </div>
         <div class="cart">
-            <button type="button" title="Carrito de compras">
+            <button type="button" title="Carrito de compras" id="shoppingCartBtn" class="shopping__cart-btn" onclick="toggleCart()">
+                <span class="cart-amount"></span>
                 <i class="fas fa-shopping-cart"></i>
             </button>
         </div>
@@ -65,26 +66,7 @@
         <!-- dinamic section -->
         <section class="product-item__container" id="productItemContainer">
             <div class="product-item__card" id="productItemCard">
-                <img src="./assets/images/jpg/productItem01.jpg" alt="Producto">
-                <div class="product-item__info">
-                    <h4>EXFO CREMOSO CON AROME Y COLOR 200CC</h4>
-                    <p>Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces que veas</p>
-                    <div class="product-item__price-btn">
-                        <p>$ 500</p>
-                        <div class="product-item__btn-container">
-                            <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-item_btn-remove" onclick="quitarDelCarrito()">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <button type="button" name="cantidadEnCarrito" title="Cantida en el Carrito" class="product-item__btn-amount" id="productItemBtnAmount">0</button>
-                            <button type="button" name="agregarAlCarrito" title="Agregar al carrito" class="product-item_btn-add" onclick="agregarAlCarrito()">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item__card" id="productItemCard">
-                <img src="./assets/images/jpg/productItem01.jpg" alt="Producto">
+                <img src="./assets/images/jpg/productItem01_1.webp" alt="Producto">
                 <div class="product-item__info">
                     <h4>EXFO CREMOSO CON AROME Y COLOR 200CC</h4>
                     <p>Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces que veas</p>
@@ -95,7 +77,26 @@
                                 <i class="fa-solid fa-minus"></i>
                             </button>
                             <button type="button" name="cantidadEnCarrito" title="Cantida en el Carrito" class="product-item__btn-amount">0</button>
-                            <button type="button" name="agregarAlCarrito" title="Agregar al carrito" class="product-item_btn-add" id="productItemBtnAdd" onclick="agregarAlCarrito()">
+                            <button type="button" name="agregarAlCarrito" title="Agregar al carrito" class="product-item_btn-add" onclick="agregarAlCarrito()">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-item__card" id="productItemCard">
+                <img src="./assets/images/jpg/productItem01_1.webp" alt="Producto">
+                <div class="product-item__info">
+                    <h4>EXFO CREMOSO CON AROME Y COLOR 200CC</h4>
+                    <p>Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces que veas</p>
+                    <div class="product-item__price-btn">
+                        <p>$ 500</p>
+                        <div class="product-item__btn-container">
+                            <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-item__btn-remove" onclick="quitarDelCarrito()">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <button type="button" name="cantidadEnCarrito" title="Cantida en el Carrito" class="product-item__btn-amount">0</button>
+                            <button type="button" name="agregarAlCarrito" title="Agregar al carrito" class="product-item__btn-add" onclick="agregarAlCarrito()">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
@@ -104,6 +105,90 @@
             </div>    
         </section>
     </main>
+
+    <article class="shopping-card__sidebar">
+        <div class="product-in-cart__card-container">
+            <div class="product-in-cart__card">
+                <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-in-cart__btn-remove" aria-label="Quitar del carrito" onclick="quitarDelCarrito()" >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="product-in-cart__row">
+                    <div class="product-in-cart__txt">
+                        <h4 id="productInCartTitle" aria-label="Tipo de producto">Crema corporal</h4>
+                        <p id="productInCartName">MANTECA BODY BUTTER VERANO 200 CC</p>
+                        <p id="productInCartAmount">1 x <span id="ProductInCartPrice">$7000</span></p>
+                    </div>
+                    <img src="./assets/images/jpg/productItem01_1.webp" alt="">
+                    <div class="product-in-cart__sub-total">
+                        <p>Subtotal: $7000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-in-cart__card">
+                <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-in-cart__btn-remove" aria-label="Quitar del carrito"  onclick="quitarDelCarrito()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="product-in-cart__row">
+                    <div class="product-in-cart__txt">
+                        <h4 id="productInCartTitle" aria-label="Tipo de producto">Crema corporal</h4>
+                        <p id="productInCartName">MANTECA BODY BUTTER VERANO 200 CC</p>
+                        <p id="productInCartAmount">1 x <span id="ProductInCartPrice">$7000</span></p>
+                    </div>
+                    <img src="./assets/images/jpg/productItem01_1.webp" alt="">
+                    <div class="product-in-cart__sub-total">
+                        <p>Subtotal: $7000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="includes/procesar__pedido.php" method="post" class="product-in-cart-form">
+            <input type="text" name="userName" id="userName" placeholder="Nombre" required>
+            <input type="number" name="usarPhone" id="userPhone" placeholder="Celular" required>
+            <select name="paymentMethod" id="paymentMethod" aria-label="Metodo de pago" title="Metodo de pago" required>
+                <optgroup title="Metodo de pago" label="Metodo de pago">
+                    <option value="efectivo">Efectivo</option>
+                    <option value="mercadoPago">Mercado Pago</option>
+                    <option value="billeteraVirtual">Billetera Virtual</option>
+                    <option value="rapipago">Rapipago</option>
+                    <option value="pagofacil">Pago Fácil</option>
+                    <option value="transferencia">Transferencia bancaria</option>
+                    <option value="tarjetaCredito">Tarjeta de crédito</option>
+                    <option value="tarjetaDebido">Tarjeta de debito</option>
+                </optgroup>
+            </select>
+            <select name="retiroMethod" id="retiroMethod" title="Metoro de retiro" aria-label="Metodo de retiro" required>
+                <optgroup title="Metodo de retiro" label="Metodo de retiro">
+                    <option value="default">Envio/Retiro</option>
+                    <option value="retiroEnPersona">Retiro en persona</option>
+                    <option value="enviar">Quiero que me lo envien</option>
+                </optgroup>
+            </select>
+            <input type="text" name="direccion" id="direccion" title="Direccion a enviar" aria-label="Direccion a enviar" placeholder="Direccion">
+            <select name="zonaDeEntrega" id="zonaDeEntrega" title="Zona de entrega" aria-label="Zona de entrega" placeholder="Zona de entrega">
+                <optgroup>
+                    <option value>Zona de entrega</option>
+                    <option value="2000" name="claypole">Claypole $2000</option>
+                    <option value="1500" name="avellaneda">Avellaneda $1500</option>
+                    <option value="1500" name="lanus">Lanús $1500</option>
+                    <option value="1800" name="quilmes">Quilmes $1800</option>
+                    <option value="1700" name="lomasDeZamora">Lomas de Zamora $1700</option>
+                    <option value="1600" name="sanMartin">San Martín $1600</option>
+                    <option value="1600" name="moron">Morón $1600</option>
+                    <option value="2000" name="tigre">Tigre $2000</option>
+                    <option value="1900" name="sanIsidro">San Isidro $1900</option>
+                    <option value="1800" name="vicenteLopez">Vicente López $1800</option>
+                </optgroup>
+            </select>
+            <textarea name="nota" id="notaTextarea" placeholder="¿Alguna observación?"></textarea>
+        </form>
+        <div class="product-in-cart__info">
+            <p>Item(s): <span id="productInCartTotalItems">0</span></p>
+            <p aria-label="Costo sin envio">Total: <span id="productInCartSubNetworth">$1000</span></p>
+            <p aria-label="Costo de envio">Costo de envio: <span id="productInCartShippingCost"></span></p>
+            <p aria-label="Costo Neto">Costo final: <span id="productInCartNetworth">$1000</span></p>
+            <button type="submit" name="procesarPedido" title="enviar pedido" class="product-in-cart__btn-procesar" aria-label="Enviar pedido" onclick="procesarPedido()">Enviar Pedido</button>
+        </div>
+    </article>
 
     <div class="opening-hours">
         <img src="./assets/images/svg/clock-svgrepo-com.svg" alt="Horario de atención">
@@ -160,7 +245,7 @@
 
     <footer class="main-footer" id="mainFooter">
         <div class="footer-brand">
-            <img src="./assets/images/logo/header_logo.png" alt="Logo">
+            <img src="./assets/images/logo/header_logo_1.webp" alt="Logo">
             <h2>BEAUTY COMESTICOS</h2>
         </div>
         <div class="footer__info">
@@ -185,6 +270,7 @@
 </div>
 
 <!-- scripts -->
+ <script src="./assets/js/toggleCart.js" module="module"></script>
 <!-- <script src="./assets/js/main.js"></script> -->
 <!-- <script src="./assets/js/searchBar.js.js"></script> -->
 
