@@ -33,6 +33,15 @@ body{
     margin: auto;
     overflow-x: hidden;
 }
+/* 
+.body__cart-hidden:not(.shopping-card__sidebar){
+    opacity: 1;
+}
+
+.body__cart-open:not(.shopping-card__sidebar){
+    opacity: .4;
+} */
+
 
 a{
     color: inherit;
@@ -327,6 +336,95 @@ h1{
     height: 100vh;
 }
 
+.product-in-cart__card-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    place-items: center;
+}
+
+.product-in-cart__card{
+    outline: 1px solid #f00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+.product-in-cart__row{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+    padding: .5rem;
+    /* width: 100%; */
+}
+
+.product-in-cart__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-in-cart__txt{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 .5rem;
+    /* padding: .5rem; */
+}
+
+
+.product-in-cart__sub-total{
+    /* padding: .5rem; */
+    color: var(--pink);
+    font-weight: 500;
+    padding-left: .5rem;
+}
+
+/* *{outline: 1px solid;} */
+
+.product-in-cart__card button{
+    /* justify-self: flex-end;
+    width: 100%; */
+    margin-top: .5rem;
+    margin-bottom: -1rem;
+    margin-left: auto;
+    padding-right: 1rem;
+    /* margin-right: auto; */
+    /* outline: 1px solid; */
+}
+
+.product-in-cart__card i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    margin: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    background: #ccc;
+    padding: .2rem;
+    border-radius: 50%;
+    transition: color .3s ease-in-out;
+}
+
+.product-in-cart__card i:hover{
+    color: #ccc;
+    background: #000;
+}
+
+.product-in-cart__card-container img{
+    width: 4rem;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
 .cart-hidden{
     display: none;
 }
@@ -334,6 +432,11 @@ h1{
 .cart-open{
     display: inherit;
 }
+
+.cart-open:is(body){
+    opacity: .4;
+}
+
 
 /* opening-hours */
 .opening-hours{
