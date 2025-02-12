@@ -1,6 +1,8 @@
 let shoppingCardContainer = document.querySelector('.shopping-card__sidebar');
 let cartBtn = document.getElementById('shoppingCartBtn');
 
+
+
 function toggleCart(shoppingCardContainer, cartBtn) {
     cartBtn.addEventListener('click', function() {
         if (shoppingCardContainer.classList.contains('cart-open')) {
