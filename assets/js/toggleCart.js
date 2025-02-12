@@ -1,7 +1,9 @@
 let shoppingCardContainer = document.querySelector('.shopping-card__sidebar');
 let cartBtn = document.getElementById('shoppingCartBtn');
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    shoppingCardContainer.classList.add('cart-hidden');
+});
 
 function toggleCart(shoppingCardContainer, cartBtn) {
     cartBtn.addEventListener('click', function() {

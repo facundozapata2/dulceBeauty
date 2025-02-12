@@ -302,6 +302,7 @@ h1{
     padding: .5rem;
 }
 
+/* add border at both sides of number in mid */
 .product-item__btn-container button:nth-child(2){
     border-right: .15rem solid var(--pink-soft);
     border-left: .15rem solid var(--pink-soft);
