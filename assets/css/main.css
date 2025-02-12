@@ -378,9 +378,12 @@ h1{
 
 .product-in-cart__sub-total{
     /* padding: .5rem; */
-    color: var(--pink);
+    /* color: var(--pink); */
+    color: var(--white);
     font-weight: 500;
     padding-left: .5rem;
+    background: #555;
+    border-radius: .2rem;
 }
 
 /* *{outline: 1px solid;} */
