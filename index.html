@@ -145,11 +145,10 @@
                 </div>
             </div>
         </div>
-        <form action="includes/procesar__pedido.php" method="post" class="product-in-cart-form">
+        <form action="includes/procesar__pedido.php" method="post" class="product-in-cart__form">
             <input type="text" name="userName" id="userName" placeholder="Nombre" required>
             <input type="number" name="usarPhone" id="userPhone" placeholder="Celular" required>
             <select name="paymentMethod" id="paymentMethod" aria-label="Metodo de pago" title="Metodo de pago" required>
-                <optgroup title="Metodo de pago" label="Metodo de pago">
                     <option value="efectivo">Efectivo</option>
                     <option value="mercadoPago">Mercado Pago</option>
                     <option value="billeteraVirtual">Billetera Virtual</option>
@@ -158,18 +157,14 @@
                     <option value="transferencia">Transferencia bancaria</option>
                     <option value="tarjetaCredito">Tarjeta de crédito</option>
                     <option value="tarjetaDebido">Tarjeta de debito</option>
-                </optgroup>
             </select>
             <select name="retiroMethod" id="retiroMethod" title="Metoro de retiro" aria-label="Metodo de retiro" required>
-                <optgroup title="Metodo de retiro" label="Metodo de retiro">
                     <option value="default">Envio/Retiro</option>
                     <option value="retiroEnPersona">Retiro en persona</option>
                     <option value="enviar">Quiero que me lo envien</option>
-                </optgroup>
             </select>
             <input type="text" name="direccion" id="direccion" title="Direccion a enviar" aria-label="Direccion a enviar" placeholder="Direccion">
             <select name="zonaDeEntrega" id="zonaDeEntrega" title="Zona de entrega" aria-label="Zona de entrega" placeholder="Zona de entrega">
-                <optgroup>
                     <option value>Zona de entrega</option>
                     <option value="2000" name="claypole">Claypole $2000</option>
                     <option value="1500" name="avellaneda">Avellaneda $1500</option>
@@ -181,14 +176,13 @@
                     <option value="2000" name="tigre">Tigre $2000</option>
                     <option value="1900" name="sanIsidro">San Isidro $1900</option>
                     <option value="1800" name="vicenteLopez">Vicente López $1800</option>
-                </optgroup>
             </select>
             <textarea name="nota" id="notaTextarea" placeholder="¿Alguna observación?"></textarea>
         </form>
         <div class="product-in-cart__info">
             <p>Item(s): <span id="productInCartTotalItems">0</span></p>
             <p aria-label="Costo sin envio">Total: <span id="productInCartSubNetworth">$1000</span></p>
-            <p aria-label="Costo de envio">Costo de envio: <span id="productInCartShippingCost"></span></p>
+            <p aria-label="Costo de envio">Costo de envio: <span id="productInCartShippingCost">$1000</span></p>
             <p aria-label="Costo Neto">Costo final: <span id="productInCartNetworth">$1000</span></p>
             <button type="submit" name="procesarPedido" title="enviar pedido" class="product-in-cart__btn-procesar" aria-label="Enviar pedido" onclick="procesarPedido()">Enviar Pedido</button>
         </div>
