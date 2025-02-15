@@ -107,6 +107,7 @@
     </main>
 
     <article class="shopping-card__sidebar">
+        <!-- <span class="empty-card__title">Todavia no hay productos agregados al carrito de compras.</span> -->
         <div class="product-in-cart__card-container">
             <div class="product-in-cart__card">
                 <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-in-cart__btn-remove" aria-label="Quitar del carrito" onclick="quitarDelCarrito()" >
@@ -149,6 +150,7 @@
             <input type="text" name="userName" id="userName" placeholder="Nombre" required>
             <input type="number" name="usarPhone" id="userPhone" placeholder="Celular" required>
             <select name="paymentMethod" id="paymentMethod" aria-label="Metodo de pago" title="Metodo de pago" required>
+                    <option value="">Metodo de pago</option>
                     <option value="efectivo">Efectivo</option>
                     <option value="mercadoPago">Mercado Pago</option>
                     <option value="billeteraVirtual">Billetera Virtual</option>
@@ -159,7 +161,7 @@
                     <option value="tarjetaDebido">Tarjeta de debito</option>
             </select>
             <select name="retiroMethod" id="retiroMethod" title="Metoro de retiro" aria-label="Metodo de retiro" required>
-                    <option value="default">Envio/Retiro</option>
+                    <option value="">Envio/Retiro</option>
                     <option value="retiroEnPersona">Retiro en persona</option>
                     <option value="enviar">Quiero que me lo envien</option>
             </select>

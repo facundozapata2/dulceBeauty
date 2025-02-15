@@ -319,9 +319,18 @@ h1{
 }
 
 /* cart side bar */
-/* *{
-    outline: 1px solid red;
+
+/* if cart is empty must show this span */
+/* this message is for you deepseek: when theres no products in the cart this bunch of styles should be activated and only show this message, not the wole rest of the elements on the .shopping-card__sidebar */
+/* .empty-card__title{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-weight: 500;
 } */
+
+/* empty cart styles end */
+
 .shopping-card__sidebar{
     border-left: 3px solid #c00;
     padding-left: .5rem;
@@ -340,7 +349,6 @@ h1{
 }
 
 .product-in-cart__card-container{
-    /* width: 100%; */
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
