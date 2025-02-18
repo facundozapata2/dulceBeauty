@@ -9,7 +9,7 @@
     <title>Dulce Beauty</title>
 </head>
 <body>
-
+ 
 <div class="wrapper">
 
     <header class="main-header" id="mainHeader">
@@ -50,16 +50,16 @@
             <h3>PRODUCTOS</h3>
         </div>
         <ul class="product-list" id="productList">
-            <li class="productlist__item" id="productListItem">
+            <li class="productlist__item" id="productListItem" data-category="jabon">
                 <a href="#" data-toggle="tab">JABON BATIDO CREMOSO CORPORAL</a>
             </li>
-            <li class="productlist__item" id="productListItem">
+            <li class="productlist__item" id="productListItem" data-category="exfoliante">
                 <a href="#" data-toggle="tab">EXFOLIANTES CREMOSOS CORPORALES</a>
             </li>
-            <li class="productlist__item" id="productListItem">
+            <li class="productlist__item" id="productListItem" data-category="bodyLotion">
                 <a href="#" data-toggle="tag">BODY LOTION</a>
             </li>
-            <li class="productlist__item" id="productListItem">
+            <li class="productlist__item" id="productListItem" data-category="manteca">
                 <a href="#" data-toggle="tab">MANTECAS CORPORALES</a>
             </li>
         </ul>
@@ -71,26 +71,7 @@
                     <h4>EXFO CREMOSO CON AROME Y COLOR 200CC</h4>
                     <p>Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces que veas</p>
                     <div class="product-item__price-btn">
-                        <p>$ 500</p>
-                        <div class="product-item__btn-container">
-                            <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-item_btn-remove" onclick="quitarDelCarrito()">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <button type="button" name="cantidadEnCarrito" title="Cantida en el Carrito" class="product-item__btn-amount">0</button>
-                            <button type="button" name="agregarAlCarrito" title="Agregar al carrito" class="product-item_btn-add" onclick="agregarAlCarrito()">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item__card" id="productItemCard">
-                <img src="./assets/images/jpg/productItem01_1.webp" alt="Producto">
-                <div class="product-item__info">
-                    <h4>EXFO CREMOSO CON AROME Y COLOR 200CC</h4>
-                    <p>Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces que veas</p>
-                    <div class="product-item__price-btn">
-                        <p>$ 500</p>
+                        <p class="product-item__price">$ 500</p>
                         <div class="product-item__btn-container">
                             <button type="button" name="quitarDelCarrito" title="Quitar del carrito" class="product-item__btn-remove" onclick="quitarDelCarrito()">
                                 <i class="fa-solid fa-minus"></i>
@@ -165,6 +146,8 @@
                     <option value="retiroEnPersona">Retiro en persona</option>
                     <option value="enviar">Quiero que me lo envien</option>
             </select>
+            <!-- only if retiroEnPersona is selected -->
+            <span class="shopping-cart_retiro-info">Calle Varela Y Eva Peron, Flores. CABA</span>
             <input type="text" name="direccion" id="direccion" title="Direccion a enviar" aria-label="Direccion a enviar" placeholder="Direccion">
             <select name="zonaDeEntrega" id="zonaDeEntrega" title="Zona de entrega" aria-label="Zona de entrega" placeholder="Zona de entrega">
                     <option value>Zona de entrega</option>
@@ -270,7 +253,8 @@
 </div>
 
 <!-- scripts -->
- <script src="./assets/js/toggleCart.js" module="module"></script>
+<script src="./assets/js/productToggleAdd.js"></script>
+<script src="./assets/js/toggleCart.js" module="module"></script>
 <!-- <script src="./assets/js/main.js"></script> -->
 <!-- <script src="./assets/js/searchBar.js.js"></script> -->
 

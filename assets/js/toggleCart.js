@@ -1,6 +1,6 @@
 let shoppingCardContainer = document.querySelector('.shopping-card__sidebar');
 let cartBtn = document.getElementById('shoppingCartBtn');
-let body = document.querySelector('body');
+// let body = document.querySelector('body');
 document.addEventListener('DOMContentLoaded', function() {
     shoppingCardContainer.classList.add('cart-hidden');
 });

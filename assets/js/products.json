@@ -1,0 +1,120 @@
+[
+  {
+      "id": 1,
+      "category": "jabon",
+      "name": "JABON BATIDO CREMOSO CORPORAL",
+      "price": 500,
+      "description": "Jabón de limpieza profunda con textura cremosa",
+      "image": "productItem01_1.webp",
+      "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+    "id": 1,
+    "category": "jabon",
+    "name": "JABON BATIDO CREMOSO CORPORAL",
+    "price": 500,
+    "description": "Jabón de limpieza profunda con textura cremosa",
+    "image": "productItem01_1.webp",
+    "alt": "Jabón corporal en envase de vidrio"
+  },
+  {
+      "id": 2,
+      "category": "exfoliante",
+      "name": "EXFO CREMOSO CORPORAL",
+      "price": 650,
+      "description": "Exfoliante con partículas naturales",
+      "image": "productItem02_1.webp",
+      "alt": "Exfoliante en envase plástico"
+  }
+]
+  
