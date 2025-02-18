@@ -1,120 +1,56 @@
 [
   {
-      "id": 1,
-      "category": "jabon",
-      "name": "JABON BATIDO CREMOSO CORPORAL",
-      "price": 500,
-      "description": "Jabón de limpieza profunda con textura cremosa",
-      "image": "productItem01_1.webp",
-      "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
     "id": 1,
     "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
+    "name": "JABON BATIDO PARA CARA Y CUERPO 200CC",
+    "price": 6500,
+    "description": "Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces que veas",
+    "image": "jabonBatido_6500.webp",
+    "alt": "Jabón en envase de vidrio"
   },
   {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
+    "id": 2,
+    "category": "exfoliante",
+    "name": "EXFO CREMOSO CON AROMA Y COLOR 200CC",
+    "price": 6500,
+    "description": "Exfoliante de limpieza profunda corporal en textura cremosa.Ideal para prevenir la foliculitis.Al contener aceites deja la piel de seda. Se puede usar las veces",
+    "image": "exfoCremoso_6500.webp",
+    "alt": "Envase de exfoliante cremoso"
   },
   {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
+    "id": 3,
+    "category": "exfoliante",
+    "name": "BODY DETOX PARA EL ACNE CORPORAL",
+    "price": 6800,
+    "description": "ESTE EXFOLIANTE ES IDEAL PARA PIELES CON ACNE EN EL CUERPO; YA SEA EN PIERNAS, GLUTEOS, ESPALDA, BRAZOS O DONDE SE NECESITE.CONTIENE CARBON",
+    "image": "exfoDetox_6800.webp",
+    "alt": "Botella de exfoliante cremoso"
   },
   {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
+    "id": 4,
+    "category": "bodyLotion",
+    "name": "BODY LOTION PARA CUERPO, MASAJES Y MANOS",
+    "price": 6500,
+    "description": "ESTA CREMA DE CUERPO , MASAJES Y  MANOS ES SUPER LIGERA, SEDOSA Y NO GRASA! ° IDEAL PARA LLEVAR AHORA EN EL VERANO A TODOS LADOS",
+    "image": "bodyLotion_6500.webp",
+    "alt": "Botella body lotion vidrio"
   },
   {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
+    "id": 5,
+    "category": "manteca",
+    "name": "MANTECA RELAX PIERNAS CANSADAS",
+    "price": 7000,
+    "description": "ESTA MANTECA ES IDEAL PARA CUANDO SENTIS CANSANCIO, PESADES Y DOLOR EN LAS PIERNAS. SUS ACEITES Y MANTECAS CONTRIBUYEN A CALMAR Y RELAJAR ESOS DOLORES",
+    "image": "mantecaRelax_6500.webp",
+    "alt": "Botella manteca relax vidrio"
   },
   {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
-    "id": 1,
-    "category": "jabon",
-    "name": "JABON BATIDO CREMOSO CORPORAL",
-    "price": 500,
-    "description": "Jabón de limpieza profunda con textura cremosa",
-    "image": "productItem01_1.webp",
-    "alt": "Jabón corporal en envase de vidrio"
-  },
-  {
-      "id": 2,
-      "category": "exfoliante",
-      "name": "EXFO CREMOSO CORPORAL",
-      "price": 650,
-      "description": "Exfoliante con partículas naturales",
-      "image": "productItem02_1.webp",
-      "alt": "Exfoliante en envase plástico"
+    "id": 6,
+    "category": "manteca",
+    "name": "MANTECA BODY BUTTER VERANO 200CC",
+    "price": 6500,
+    "description": "AL CONTENER GRAN CANTIDAD DE ACEITES Y MANTECAS, ALIADOS PARA LA RESEQUEDAD EN LA PIEL, NUTREN E HIDRATAN EN PROFUNDIDAD. RECOMENDADO PARA PIELES EXTRA SECAS",
+    "image": "bodyLotion_6500.webp",
+    "alt": "Botella body lotion vidrio"
   }
 ]
-  
