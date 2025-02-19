@@ -41,7 +41,7 @@
     <section class="search-bar" id="searchBar">
         <form action="#" method="get">
             <input type="text" name="search" id="search" placeholder="Buscar...">
-            <button type="submit" title="Buscar"><i class="fas fa-search"></i></button>
+            <button type="submit" title="Buscar" id="searchBtn"><i class="fas fa-search"></i></button>
         </form>
     </section>
 
@@ -50,21 +50,25 @@
             <h3>PRODUCTOS</h3>
         </div>
         <ul class="product-list" id="productList">
-            <li class="productlist__item" id="productListItem" data-category="jabon">
+            <li class="productlist__item active" data-category="all">
+                <a href="#" data-toggle="tab">TODOS</a>
+            </li>
+            <li class="productlist__item" data-category="jabon">
                 <a href="#" data-toggle="tab">JABON BATIDO CREMOSO CORPORAL</a>
             </li>
-            <li class="productlist__item" id="productListItem" data-category="exfoliante">
+            <li class="productlist__item" data-category="exfoliante">
                 <a href="#" data-toggle="tab">EXFOLIANTES CREMOSOS CORPORALES</a>
             </li>
-            <li class="productlist__item" id="productListItem" data-category="bodyLotion">
-                <a href="#" data-toggle="tag">BODY LOTION</a>
+            <li class="productlist__item" data-category="bodyLotion">
+                <a href="#" data-toggle="tab">BODY LOTION</a>
             </li>
-            <li class="productlist__item" id="productListItem" data-category="manteca">
+            <li class="productlist__item" data-category="manteca">
                 <a href="#" data-toggle="tab">MANTECAS CORPORALES</a>
             </li>
         </ul>
         <!-- dinamic section -->
         <section class="product-item__container" id="productItemContainer">
+
             <!-- <div class="product-item__card" id="productItemCard" data-category="Exfoliante">
                 <img src="./assets/images/jpg/productItem01_1.webp" alt="Producto">
                 <div class="product-item__info">
@@ -258,10 +262,12 @@
 </div>
 
 <!-- scripts -->
-<script src="./assets/js/productToggleAdd.js"></script>
-<script src="./assets/js/toggleCart.js" module="module"></script>
-<!-- <script src="./assets/js/main.js"></script> -->
-<!-- <script src="./assets/js/searchBar.js.js"></script> -->
+<script type="module" src="./assets/js/main.js"></script>
+<!-- filter when click a <li productList__item> -->
+<script type="module" src="./assets/js/components/product-item__card.js"></script>
+<script type="module" src="./assets/js/productFilter.js"></script>
+<script src="./assets/js/toggleCart.js"></script>
+<!-- <script type="module" src="./assets/js/components/SideBarProduct.js"></script> -->
 
 </body>
 </html>

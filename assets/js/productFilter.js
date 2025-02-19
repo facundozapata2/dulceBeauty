@@ -1,5 +1,5 @@
 // ProductFilter.js
-import { ProductCard } from './ProductCard.js';
+import { ProductCard } from './components/product-item__card.js';
 
 export class ProductFilter {
   constructor() {
