@@ -11,7 +11,7 @@ export class ProductCard {
       card.dataset.category = this.product.category;
   
       card.innerHTML = `
-        <img src="./assets/images/jpg/${this.product.image}" 
+        <img src="./assets/images/webp/${this.product.image}" 
              alt="${this.product.alt}"
              class="product-item__image"
              loading="lazy">
