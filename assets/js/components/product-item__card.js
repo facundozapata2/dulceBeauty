@@ -24,13 +24,13 @@ export class ProductCard {
             <p class="product-item__price">$${this.product.price}</p>
             
             <div class="product-item__controls">
-              <button class="product-item__btn-remove" 
+              <button class="product-item__btn-remove controls-btn" 
                       aria-label="Quitar una unidad"
                       data-id="${this.product.id}">
                 <i class="fa-solid fa-minus"></i>
               </button>
               <span class="product-item__quantity">0</span>
-              <button class="product-item__btn-add" 
+              <button class="product-item__btn-add controls-btn" 
                       aria-label="Agregar una unidad"
                       data-id="${this.product.id}">
                 <i class="fa-solid fa-plus"></i>
