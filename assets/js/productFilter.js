@@ -5,13 +5,18 @@ export class ProductFilter {
   constructor() {
     this.container = document.getElementById('productItemContainer');
     this.categories = document.querySelectorAll('[data-category]');
+    this.searchInput = document.getElementById('search');
+    this.searchBtn = document.getElementById('searchBtn');
     this.products = [];
+    this.currentCategory = 'all';
+    this.currentSearchTerm = '';
   }
 
   async init() {
     await this.loadProducts();
     this.setupCategoryFilters();
-    this.renderProducts();
+    this.initSearch();
+    this.applyFilters();
   }
 
   async loadProducts() {
@@ -19,13 +24,39 @@ export class ProductFilter {
     this.products = await response.json();
   }
 
-  renderProducts(category = 'all') {
-    this.container.innerHTML = '';
-    const filtered = category === 'all' 
-      ? this.products 
-      : this.products.filter(p => p.category === category);
+  initSearch() {
+    this.searchInput.addEventListener('input', (e) => {
+      this.currentSearchTerm = e.target.value.trim().toLowerCase();
+      this.applyFilters();
+    });
 
-    filtered.forEach(product => {
+    this.searchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.currentSearchTerm = this.searchInput.value.trim().toLowerCase();
+      this.applyFilters();
+    });
+  }
+
+  applyFilters() {
+    let filtered = this.products;
+
+    if (this.currentCategory !== 'all') {
+      filtered = filtered.filter(p => p.category === this.currentCategory);
+    }
+
+    if (this.currentSearchTerm) {
+      filtered = filtered.filter(product => {
+        return product.name.toLowerCase().includes(this.currentSearchTerm) ||
+               product.description.toLowerCase().includes(this.currentSearchTerm);
+      });
+    }
+
+    this.renderFilteredProducts(filtered);
+  }
+
+  renderFilteredProducts(filteredProducts) {
+    this.container.innerHTML = '';
+    filteredProducts.forEach(product => {
       const card = new ProductCard(product).render();
       this.container.appendChild(card);
     });
@@ -35,10 +66,9 @@ export class ProductFilter {
     this.categories.forEach(category => {
       category.addEventListener('click', (e) => {
         e.preventDefault();
-        const selectedCategory = category.dataset.category;
-        this.renderProducts(selectedCategory);
+        this.currentCategory = category.dataset.category;
+        this.applyFilters();
         
-        // Actualizar clase activa
         this.categories.forEach(c => c.classList.remove('active'));
         category.classList.add('active');
       });
