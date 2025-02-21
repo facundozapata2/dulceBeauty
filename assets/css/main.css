@@ -34,14 +34,6 @@ body{
     margin: auto;
     overflow-x: hidden;
 }
-/* 
-.body__cart-hidden:not(.shopping-card__sidebar){
-    opacity: 1;
-}
-
-.body__cart-open:not(.shopping-card__sidebar){
-    opacity: .4;
-} */
 
 a{
     color: inherit;
@@ -52,7 +44,7 @@ ul{
     list-style: none;
 }
 
-button, input, select, optgroup, option{
+button, input, select, optgroup, option, textarea{
     cursor: pointer;
     border: none;
     background: transparent;
