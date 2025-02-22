@@ -1,6 +1,6 @@
 // 📁 js/main.js
 import { CartManager } from './cartManager.js';
-import { ProductFilter } from './ProductFilter.js';
+import { ProductFilter } from './productFilter.js';
 import { toggleCart } from './toggleCart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
