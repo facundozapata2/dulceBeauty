@@ -715,3 +715,110 @@ h1{
     color:  rgb(24, 235, 101);
     transform: scale(1.225);
 }
+
+/* feedback0 */
+
+/* Feedback visual */
+.feedback {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 1000;
+    opacity: 0;
+    animation: feedbackFade 3s ease;
+  }
+  
+  @keyframes feedbackFade {
+    0% { opacity: 0; transform: translateY(100%); }
+    15% { opacity: 1; transform: translateY(0); }
+    85% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(100%); }
+  }
+  
+  .feedback--success {
+    background: #4CAF50;
+    color: white;
+  }
+  
+  .feedback--error {
+    background: #f44336;
+    color: white;
+  }
+  
+  .feedback--warning {
+    background: #ff9800;
+    color: white;
+  }
+  
+  /* Controles de cantidad */
+  .product-item__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .product-item__quantity {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Estados de vacío/error */
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    border-radius: 12px;
+  }
+  
+  .empty-state__icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+  
+  .empty-state__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .empty-state__description {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Variantes de estado */
+  .empty-state--loading .empty-state__icon {
+    animation: rotate 1.5s linear infinite;
+  }
+  
+  .empty-state--no-results {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+  }
+  
+  .empty-state--error {
+    background: #fff5f5;
+    border: 2px solid #ffd6d6;
+    color: #dc3545;
+  }
+  
+  /* Animaciones */
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .empty-state {
+    animation: fadeIn 0.6s ease;
+  }

@@ -1,8 +1,9 @@
-// ProductFilter.js
-import { ProductCard } from './components/ProductCardMain.js';
+// 📁 js/ProductFilter.js
+import { ProductCard } from './components/productCardMain.js';
 
 export class ProductFilter {
-  constructor() {
+  constructor(cartManager) {
+    this.cartManager = cartManager;
     this.container = document.getElementById('productItemContainer');
     this.categories = document.querySelectorAll('[data-category]');
     this.searchInput = document.getElementById('search');
@@ -20,14 +21,26 @@ export class ProductFilter {
   }
 
   async loadProducts() {
-    const response = await fetch('./products.json');
-    this.products = await response.json();
+    try {
+      const response = await fetch('./products.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      this.products = await response.json();
+      if (!Array.isArray(this.products)) throw new Error('Formato de productos inválido');
+    } catch (error) {
+      console.error('Error cargando productos:', error);
+      this.container.innerHTML = '<p class="error">⚠️ Error cargando productos</p>';
+      throw error;
+    }
   }
 
   initSearch() {
+    let timeout;
     this.searchInput.addEventListener('input', (e) => {
-      this.currentSearchTerm = e.target.value.trim().toLowerCase();
-      this.applyFilters();
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        this.currentSearchTerm = e.target.value.trim().toLowerCase();
+        this.applyFilters();
+      }, 300);
     });
 
     this.searchBtn.addEventListener('click', (e) => {
@@ -38,11 +51,9 @@ export class ProductFilter {
   }
 
   applyFilters() {
-    let filtered = this.products;
-
-    if (this.currentCategory !== 'all') {
-      filtered = filtered.filter(p => p.category === this.currentCategory);
-    }
+    let filtered = this.currentCategory === 'all' 
+      ? this.products 
+      : this.products.filter(p => p.category === this.currentCategory);
 
     if (this.currentSearchTerm) {
       filtered = filtered.filter(product => {
@@ -55,9 +66,12 @@ export class ProductFilter {
   }
 
   renderFilteredProducts(filteredProducts) {
-    this.container.innerHTML = '';
+    this.container.innerHTML = filteredProducts.length === 0 
+      ? '<p class="no-results">🔍 No se encontraron productos</p>' 
+      : '';
+      
     filteredProducts.forEach(product => {
-      const card = new ProductCard(product).render();
+      const card = new ProductCard(product, this.cartManager).render();
       this.container.appendChild(card);
     });
   }
@@ -67,10 +81,9 @@ export class ProductFilter {
       category.addEventListener('click', (e) => {
         e.preventDefault();
         this.currentCategory = category.dataset.category;
-        this.applyFilters();
-        
         this.categories.forEach(c => c.classList.remove('active'));
         category.classList.add('active');
+        this.applyFilters();
       });
     });
   }
