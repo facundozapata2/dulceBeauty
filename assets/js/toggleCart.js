@@ -4,7 +4,7 @@ export function toggleCart() {
     const cartBtn = document.getElementById('shoppingCartBtn');
   
     if (!cart || !cartBtn) return;
-  
+    
     cartBtn.addEventListener('click', () => {
       cart.classList.toggle('cart-open');
       cart.classList.toggle('cart-hidden');

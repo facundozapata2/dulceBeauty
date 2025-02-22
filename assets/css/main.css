@@ -757,7 +757,7 @@ h1{
   .product-item__controls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    /* gap: 8px; */
   }
   
   .product-item__quantity {
