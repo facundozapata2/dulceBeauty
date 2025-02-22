@@ -1,5 +1,5 @@
 // 📁 js/main.js
-import { CartManager } from './CartManager.js';
+import { CartManager } from './cartManager.js';
 import { ProductFilter } from './ProductFilter.js';
 import { toggleCart } from './toggleCart.js';
 
