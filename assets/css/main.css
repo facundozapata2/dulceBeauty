@@ -84,7 +84,36 @@ h1{
     font-size: 1.25rem;
 }
 
+.shopping__cart-btn{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+}
+
+.cart-amount{
+    background: var(--pink-soft);
+    top: -.5rem;
+    right: -.5rem;
+    position: absolute;
+    color: #000;
+    font-weight: 600;
+    padding: .1rem .4rem;
+    border-radius: 1rem;
+    font-size: .8rem;
+}
+
+.cart-total{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.cart-info{
+    display: flex;
+}
+
 .cart i{
+    font-size: 1.2rem;
     transition: transform .3s ease-in-out;
 }
 
