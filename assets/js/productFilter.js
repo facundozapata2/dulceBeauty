@@ -1,5 +1,4 @@
 import { ProductCard } from './components/ProductCardMain.js';
-
 export class ProductFilter {
   constructor(cartManager) {
     this.cartManager = cartManager;

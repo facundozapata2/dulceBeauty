@@ -100,6 +100,25 @@
         <!-- <span class="empty-card__title">Todavia no hay productos agregados al carrito de compras.</span> -->
         <div class="product-in-cart__card-container">
             <!-- productCartItem component -->
+            <div class="product-item-cart__card">
+                <button type="button" name="borrar producto" title="borrar producto"><i class="fa-solid fa-circle-xmark"></i></button>
+                <div class="product-item__info">
+                    <h4 class="product-item__title">crema corporakl</h4>
+                    <p class="product-item__description">manteca body butter verano 200cc</p>
+                    <div class="unit-cart">
+                     <p class="product-item__quantity-cart">1 x</p>
+                     <p class="product-item__price">$ 7000</p>   
+                    </div>
+                    <div class="img-container-cart">
+                        <img src="./assets/images/webp/jabonBatido_6500.webp" alt="jabon batido">
+                    </div>
+                </div>
+                <div class="product-item__subtotal">
+                    <p class="product-item__subtotal-title">Subtotal:</p>
+                    <p class="product-item__subtotal-price">$ 7000</p>
+                </div>
+            </div>
+
         </div>
         <form action="includes/procesar__pedido.php" method="post" class="product-in-cart__form">
             <input type="text" name="userName" id="userName" placeholder="Nombre" required>
@@ -239,6 +258,7 @@
 <script type="module" src="./assets/js/components/ProductCartCard.js"></script>
 <script type="module" src="./assets/js/components/EmptyCartMessage.js"></script>
 <script type="module" src="./assets/js/toggleCart.js"></script>
+<script type="module" src="./assets/js/shoppingCartSidebar.js"></script>
 
 </body>
 </html>

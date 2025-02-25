@@ -2,7 +2,6 @@
 import { CartManager } from './cartManager.js';
 import { ProductFilter } from './productFilter.js';
 import { toggleCart } from './toggleCart.js';
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const cartManager = new CartManager();

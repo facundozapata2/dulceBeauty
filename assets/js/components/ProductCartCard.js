@@ -1,5 +1,5 @@
 // components/ProductCardMain.js
-export class ProductCard {
+export class ProductCartItem {
   constructor(product, cartManager) {
     this.product = product;
     this.cartManager = cartManager;
