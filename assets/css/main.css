@@ -7,6 +7,8 @@
     --pink: #e83e8c;
     --pink-soft: rgb(246, 199, 255);
     --pink-body-bg:  #f7c6fe;
+    --red-hot: #de0100;
+    --grey-bg: #555555;
 }
 
 *{
@@ -281,8 +283,6 @@ h1{
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    container-type: inline-size;
-    container-name: productitem;
 }
 
 .product-item__info{
@@ -379,8 +379,8 @@ h1{
     z-index: 100;
     background: var(--white);
     width: clamp(280px, 50%, 340px);
+    height: 100dvh;
     box-shadow: -2px 0 10px rgba(232, 62, 140, .333);
-    height: 100vh;
 }
 
 .cart-hidden{
@@ -406,15 +406,77 @@ h1{
 }
 
 .product-item-cart__card{
+    background: var(--pink-body-bg);
+    border-radius: .5rem;
     position: relative;
     display: flex;
+    flex-direction: column;
+    gap: .5rem;
     width: 100%;
+    padding: .5rem;
+    font-weight: 500;
 }
 
 .product-item-cart__card button{
     position: absolute;
-    top: 0;
+    top: .5rem;
+    right: .5rem;
+    transition: color .3s ease-in-out, transform .3s ease-in-out;
 }
+
+.product-item-cart__card button:hover,
+.product-item-cart__card button:active{
+    color: var(--red-hot);
+    transform: scale(1.25);
+}
+
+.product-item-cart__card  i{
+    font-size: 1.15rem;
+}
+
+.product-item-cart__info{
+    display: flex;
+    margin-top: 1.25rem;
+    /* gap: .5rem; */
+}
+
+.product-item-cart__info-txt{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.unit-cart{
+    display: flex;
+}
+
+.img-container-cart img{
+    width: 4rem;
+    height: auto;
+    border-radius: .5rem;
+    aspect-ratio: 1/2;
+    object-fit: cover;
+    transition: transform .3s ease-in-out;
+}
+
+.img-container-cart img:hover,
+.img-container-cart img:active{
+    transform: scale(1.1) translateY(.5rem);
+}
+
+.product-item__subtotal{
+    font-weight: 600;
+    display: flex;
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    gap: .25rem;    
+    background: var(--grey-bg);
+    color: var(--white);
+}
+
+/* *{outline: 1px solid #f00;} */
 
 /* .product-in-cart__card-container img{
     width: 4rem;
