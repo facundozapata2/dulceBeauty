@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Configura el toggle para mostrar/ocultar el carrito
     toggleCart();
 
+    // Actualiza el contenido del carrito en el sidebar al cargar el DOM
+    shoppingCartSidebar.actualizarContenido();
+    shoppingCartSidebar.actualizarTotales();
+    
     // Escucha el evento personalizado "actualizarCarrito"
-    // Cada vez que se modifique el carrito, se actualizará el header y el sidebar
     document.addEventListener('actualizarCarrito', () => {
       // Actualizar el contador de ítems en el header
       const cartAmountElement = document.querySelector('.cart-amount');

@@ -575,10 +575,10 @@ h1{
     transform: scale(1.1);
 }
 
-
-.product-in-cart__form,
-.product-in-cart__info{
-    display: none;
+/* remove with js */
+.cart-form__hidden,
+.cart-info__hidden {
+  display: none;
 }
 
 

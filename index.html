@@ -97,11 +97,11 @@
     </main>
 
     <article class="shopping-card__sidebar cart-hidden">
-        <!-- <span class="empty-card__title">¡Todavia no hay productos agregados al carrito de compras! 😔 </span> -->
         <div class="product-in-cart__card-container">
             <!-- productCartItem component -->
+
         </div>
-        <form action="includes/procesar__pedido.php" method="post" class="product-in-cart__form">
+        <form action="includes/procesar__pedido.php" method="post" class="product-in-cart__form cart-form__hidden">
             <input type="text" name="userName" id="userName" placeholder="Nombre" required>
             <input type="number" name="usarPhone" id="userPhone" placeholder="Celular" required>
             <select name="paymentMethod" id="paymentMethod" aria-label="Metodo de pago" title="Metodo de pago" required>
@@ -138,7 +138,7 @@
             </select>
             <textarea name="nota" id="notaTextarea" placeholder="¿Alguna observación?"></textarea>
         </form>
-        <div class="product-in-cart__info">
+        <div class="product-in-cart__info cart-info__hidden">
             <p>Item(s): <span id="productInCartTotalItems">0</span></p>
             <p aria-label="Costo sin envio">Total: <span id="productInCartSubNetworth">$1000</span></p>
             <p aria-label="Costo de envio">Costo de envio: <span id="productInCartShippingCost">$1000</span></p>
