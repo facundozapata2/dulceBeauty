@@ -27,7 +27,7 @@ html{
 
 body{
     width: 100%;
-    height: 100%;
+    height: clamp(100%, 100dvh, 100vh);
     min-height: 100vh;
     background: linear-gradient(to bottom,  var(--pink-soft), var(--pink-body-bg));
     display: flex;
@@ -115,7 +115,7 @@ h1{
 }
 
 .cart i{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transition: transform .3s ease-in-out;
 }
 
@@ -448,6 +448,11 @@ h1{
     gap: .5rem;
 }
 
+.product-item__description {
+    max-height: 4.5rem;
+    overflow-y:hidden;
+}
+
 .unit-cart{
     display: flex;
 }
@@ -487,6 +492,11 @@ h1{
 } */
 
 /* shopping sidebar <form> styles */
+
+/* default hidden form */
+
+
+
 .product-in-cart__form{
     display: grid;
     grid-template-columns: 1fr;
@@ -564,6 +574,13 @@ h1{
     box-shadow: 0 0 6px var(--pink);
     transform: scale(1.1);
 }
+
+
+.product-in-cart__form,
+.product-in-cart__info{
+    display: none;
+}
+
 
 /* opening-hours */
 .opening-hours{
@@ -858,3 +875,10 @@ h1{
   .empty-state {
     animation: fadeIn 0.6s ease;
   }
+
+.empty-card__title{
+    height: clamp(100%, 100dvh, 100vh);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}

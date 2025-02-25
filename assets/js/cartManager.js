@@ -1,4 +1,6 @@
 // 📁 js/CartManager.js
+
+
 export class CartManager {
   constructor() {
     this.carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -99,6 +101,16 @@ export class CartManager {
       // Usar precioUnitario para evitar variaciones de precio futuro
       return total + (item.precioUnitario * item.cantidad);
     }, 0);
+  }
+  
+  // Métodos agregados para compatibilidad con el sidebar:
+  getTotalNeto() {
+    // Si en el futuro se agrega costo de envío, se suma aquí.
+    return this.getTotal();
+  }
+  
+  getTotalPrecio() {
+    return this.getTotal();
   }
 
   // Obtener copia segura del carrito

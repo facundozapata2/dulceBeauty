@@ -1,20 +1,37 @@
-// 📁 js/main.js
+// main.js
 import { CartManager } from './cartManager.js';
 import { ProductFilter } from './productFilter.js';
 import { toggleCart } from './toggleCart.js';
+import { ShoppingCartSidebar } from './shoppingCartSidebar.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
+    // Inicializa el gestor del carrito
     const cartManager = new CartManager();
+    // Inicializa el filtrado y renderizado de productos en la sección principal
     const productFilter = new ProductFilter(cartManager);
+    // Inicializa el sidebar del carrito
+    const shoppingCartSidebar = new ShoppingCartSidebar(cartManager);
     
+    // Carga los productos y configura la búsqueda/filtros
     await productFilter.init();
+    
+    // Configura el toggle para mostrar/ocultar el carrito
     toggleCart();
 
-    // Actualizar contador del header
+    // Escucha el evento personalizado "actualizarCarrito"
+    // Cada vez que se modifique el carrito, se actualizará el header y el sidebar
     document.addEventListener('actualizarCarrito', () => {
-      document.querySelector('.cart-amount').textContent = cartManager.getTotalItems();
+      // Actualizar el contador de ítems en el header
+      const cartAmountElement = document.querySelector('.cart-amount');
+      if (cartAmountElement) {
+         cartAmountElement.textContent = cartManager.getTotalItems();
+      }
+      // Actualizar el contenido del carrito en el sidebar
+      shoppingCartSidebar.actualizarContenido();
+      // Actualizar los totales (subtotales, costos, etc.) en el sidebar
+      shoppingCartSidebar.actualizarTotales();
     });
-
   } catch (error) {
     console.error('Error inicial:', error);
     document.getElementById('productItemContainer').innerHTML = `

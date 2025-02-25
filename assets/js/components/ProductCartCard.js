@@ -1,97 +1,54 @@
-// components/ProductCardMain.js
+// 📁 js/components/ProductCartCard.js
+
 export class ProductCartItem {
   constructor(product, cartManager) {
-    this.product = product;
+    this.product = product; // El producto con sus datos (incluye id, name, price, image, etc.)
     this.cartManager = cartManager;
-    this.quantityElement = null;
   }
 
   render() {
-    const card = document.createElement('article');
-    card.className = 'product-item__card';
+    const card = document.createElement('div');
+    card.className = 'product-item-cart__card';
+    // Se utiliza data-id para relacionar el producto
     card.dataset.id = this.product.id;
-    card.dataset.category = this.product.category;
 
+    // Estructura adaptada para el carrito:
     card.innerHTML = `
-      <img src="./assets/images/webp/${this.product.image}" 
-           alt="${this.product.alt}"
-           class="product-item__image"
-           loading="lazy"
-           onerror="this.onerror=null;this.src='./assets/images/placeholder.webp'">
-      
-      <div class="product-item__info">
-        <h4 class="product-item__title">${this.product.name}</h4>
-        <p class="product-item__description">${this.product.description}</p>
-        
-        <div class="product-item__price-btn">
-          <p class="product-item__price">$${this.product.price}</p>
-          
-          <div class="product-item__controls">
-            <button class="product-item__btn-remove controls-btn" 
-                    aria-label="Quitar una unidad"
-                    data-id="${this.product.id}">
-              <i class="fa-solid fa-minus"></i>
-            </button>
-            <span class="product-item__quantity">0</span>
-            <button class="product-item__btn-add controls-btn" 
-                    aria-label="Agregar una unidad"
-                    data-id="${this.product.id}">
-              <i class="fa-solid fa-plus"></i>
-            </button>
+      <button type="button" name="borrar producto" title="Borrar producto">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+      <div class="product-item-cart__info">
+        <div class="product-item-cart__info-txt">
+          <h4 class="product-item__title">${this.product.name}</h4>
+          <p class="product-item__description">${this.product.description}</p>
+          <div class="unit-cart">
+            <p class="product-item__quantity-cart">${this.product.cantidad} x</p>
+            <p class="product-item__price">$${this.product.price}</p>   
           </div>
         </div>
+        <div class="img-container-cart">
+          <img src="./assets/images/webp/${this.product.image}" 
+               alt="${this.product.alt}" 
+               loading="lazy"
+               onerror="this.onerror=null;this.src='./assets/images/placeholder.webp'">
+        </div>
+      </div>
+      <div class="product-item__subtotal">
+        <p class="product-item__subtotal-title">Subtotal:</p>
+        <p class="product-item__subtotal-price">$${this.product.cantidad * this.product.price}</p>
       </div>
     `;
 
-    this.setupEventListeners(card);
-    this.quantityElement = card.querySelector('.product-item__quantity');
-    this.updateQuantity();
-    
+    // Agregar listeners para eliminar la card completa:
+    const deleteBtn = card.querySelector('button[name="borrar producto"]');
+    deleteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();// cuando clickeo en button name="borrar producto" no se propaga el evento
+      this.cartManager.eliminarProducto(this.product.id);
+    });
+
+    // Aquí también puedes agregar botones para agregar o quitar unidades
+    // si lo consideras necesario en el carrito.
+
     return card;
-  }
-
-  setupEventListeners(card) {
-    // Botón Agregar
-    card.querySelector('.product-item__btn-add').addEventListener('click', () => {
-      try {
-        this.cartManager.añadirProducto(this.product);
-        this.showFeedback('✔️ Añadido al carrito', 'success');
-      } catch (error) {
-        this.showFeedback(`⚠️ ${error.message}`, 'error');
-      }
-    });
-
-    // Botón Quitar
-    card.querySelector('.product-item__btn-remove').addEventListener('click', () => {
-      try {
-        this.cartManager.eliminarProducto(this.product.id);
-        this.showFeedback('➖ Eliminado del carrito', 'warning');
-      } catch (error) {
-        this.showFeedback(`⚠️ ${error.message}`, 'error');
-      }
-    });
-
-    document.addEventListener('actualizarCarrito', () => this.updateQuantity());
-  }
-
-  updateQuantity() {
-    if (!this.cartManager?.carrito) return;
-    
-    const item = this.cartManager.carrito.find(item => item.id === this.product.id);
-    this.quantityElement.textContent = item ? item.cantidad : '0';
-    
-    const removeBtn = this.quantityElement.parentElement.querySelector('.product-item__btn-remove');
-    if (removeBtn) {
-      removeBtn.disabled = !item || item.cantidad <= 0;
-    }
-  }
-
-  showFeedback(mensaje, tipo) {
-    const feedback = document.createElement('div');
-    feedback.className = `feedback feedback--${tipo}`;
-    feedback.textContent = mensaje;
-    
-    document.body.appendChild(feedback);
-    setTimeout(() => feedback.remove(), 2000);
   }
 }
