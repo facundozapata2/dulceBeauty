@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const shoppingCartSidebar = new ShoppingCartSidebar(cartManager);
     
     // 🔹 Inicializa el formulario del pedido
-    const orderForm = new OrderForm(cartManager); // 🚀 Ahora sí está instanciado
+    const orderForm = new OrderForm(cartManager); // Ahora el formulario está instanciado correctamente
     
     // 🔹 Carga los productos y configura la búsqueda/filtros
     await productFilter.init();
@@ -25,26 +25,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 🔹 Configura el toggle para mostrar/ocultar el carrito
     toggleCart();
 
-    // 🔹 Actualiza el contenido del carrito en el sidebar al cargar el DOM
+    // 🔹 Actualiza el contenido y totales del carrito en el sidebar al cargar el DOM
     shoppingCartSidebar.actualizarContenido();
     shoppingCartSidebar.actualizarTotales();
-    shoppingCartSidebar.costoDeEnvio(); // 🚀 Asegura que el select de envío tenga el listener activo
+    shoppingCartSidebar.costoDeEnvio(); // Asegura que el select de envío tenga su listener activo
     
     // 🔹 Escucha el evento personalizado "actualizarCarrito"
     document.addEventListener('actualizarCarrito', () => {
-      // 📌 Actualizar el contador de ítems en el header
+      // Actualizar el contador de ítems en el header
       const cartAmountElement = document.querySelector('.cart-amount');
       if (cartAmountElement) {
-        cartAmountElement.textContent = cartManager.getTotalItems();
+         cartAmountElement.textContent = cartManager.getTotalItems();
       }
       
-      // 📌 Actualizar el contenido del carrito en el sidebar
+      // Actualizar el contenido del carrito en el sidebar
       shoppingCartSidebar.actualizarContenido();
       
-      // 📌 Actualizar los totales (subtotales, costos, etc.) en el sidebar
+      // Actualizar los totales (subtotales, costos, etc.) en el sidebar
       shoppingCartSidebar.actualizarTotales();
-
-      // 📌 Vuelve a asegurar que el costo de envío se actualice al cambiar la selección
+      
+      // Volver a adjuntar el listener del costo de envío (en caso de que el DOM se actualice)
       shoppingCartSidebar.costoDeEnvio();
     });
 

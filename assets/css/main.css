@@ -522,10 +522,28 @@ h1{
     }
 }
 
-select[name="zonaDeEntrega"],
+/* select[name="zonaDeEntrega"],
 input[name="direccion"]{
     display: none;
+} */
+
+/* Por defecto, los elementos de envío están ocultos */
+
+#direccion,
+#zonaDeEntrega,
+#productInCartShippingCost {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
 }
+
+.visible-delivery {
+  opacity: 1;
+  max-height: fit-content; /* Ajusta según el contenido */
+}
+
+
 
 .product-in-cart__info{
     display: grid;
@@ -577,11 +595,24 @@ input[name="direccion"]{
     transform: scale(1.1);
 }
 
-/* remove with js */
-.cart-form__hidden,
-.cart-info__hidden {
-  display: none;
+
+/* Estado por defecto: oculto con opacidad 0 y desplazado */
+.product-in-cart__form,
+.product-in-cart__info {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;  /* Evita que se interactúe cuando está oculto */
 }
+
+/* Estado visible: opacidad 1 y posición normal */
+.product-in-cart__form.visible,
+.product-in-cart__info.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 
 /* opening-hours */
 .opening-hours{

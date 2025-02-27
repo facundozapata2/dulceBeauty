@@ -8,61 +8,77 @@ export class ShoppingCartSidebar {
     this.sidebar = document.querySelector(sidebarSelector);
   }
   
-  // Método que muestra u oculta el formulario y la información del carrito según si hay o no productos.
+  // Muestra u oculta el formulario y la información del carrito según si hay productos
   mostrarFormulario() {
     const formulario = this.sidebar.querySelector('.product-in-cart__form');
     const info = this.sidebar.querySelector('.product-in-cart__info');
     if (!formulario || !info) return;
     
     if (this.carritoManager.carrito.length === 0) {
-      formulario.classList.add('cart-form__hidden');
-      info.classList.add('cart-info__hidden');
+      formulario.classList.remove('visible');
+      info.classList.remove('visible');
     } else {
-      formulario.classList.remove('cart-form__hidden');
-      info.classList.remove('cart-info__hidden');
+      formulario.classList.add('visible');
+      info.classList.add('visible');
     }
   }
   
-  // Método que actualiza el contenedor de las cards del carrito.
+  // Actualiza el contenedor de las cards del carrito
   actualizarContenido() {
     const contenedor = this.sidebar.querySelector('.product-in-cart__card-container');
     if (!contenedor) return;
     contenedor.innerHTML = ''; // Limpia el contenedor
   
     if (this.carritoManager.carrito.length === 0) {
-      // Si el carrito está vacío, muestra el mensaje vacío.
+      // Si el carrito está vacío, muestra el mensaje de carrito vacío
       contenedor.appendChild(new EmptyCartMessage().render());
     } else {
-      // Por cada producto en el carrito, crea el componente del producto en el carrito.
+      // Por cada producto en el carrito, crea el componente y lo inserta
       this.carritoManager.carrito.forEach(item => {
         const productCartItem = new ProductCartItem(item, this.carritoManager);
         contenedor.appendChild(productCartItem.render());
       });
     }
-    
-    // Después de actualizar las cards, se muestra u oculta el formulario y la info.
+    // Después de actualizar las cards, se muestra u oculta el formulario y la info
     this.mostrarFormulario();
   }
   
-  // Método que actualiza los totales (total y cantidad) en el sidebar y en el header.
+  // Actualiza los totales mostrados en el sidebar y en el header
   actualizarTotales() {
+    // Elementos para mostrar el total de productos y cantidad
     const totalElements = document.getElementsByClassName('cart-total');
     const cartAmountElements = document.getElementsByClassName('cart-amount');
-    const totalNeto = `$${this.carritoManager.getTotalNeto()}`;
-    const totalItems = `${this.carritoManager.getTotalItems()}`;
+    const netWorthElement = document.querySelector('#productInCartNetworth');
+    const shippingCostElement = document.querySelector('#productInCartShippingCost');
+  
+    const totalProductos = this.carritoManager.getTotal();
+    let shippingCost = 0;
+    const retiroSelect = document.getElementById('retiroMethod');
+    if (retiroSelect && retiroSelect.value === 'enviar') {
+      // Se parsea el contenido del costo de envío, removiendo el símbolo '$'
+      shippingCost = parseInt(shippingCostElement.textContent.replace('$', '')) || 0;
+    }
+    const totalFinal = totalProductos + shippingCost;
+  
+    // Actualiza los elementos que muestran el total de productos
     Array.from(totalElements).forEach(element => {
-      element.textContent = totalNeto;
+      element.textContent = `$${totalProductos}`;
     });
+    // Actualiza los elementos que muestran la cantidad total de productos
     Array.from(cartAmountElements).forEach(element => {
-      element.textContent = totalItems;
+      element.textContent = `${this.carritoManager.getTotalItems()}`;
     });
+    // Actualiza el total final (net worth)
+    if (netWorthElement) {
+      netWorthElement.textContent = `$${totalFinal}`;
+    }
   }
   
-  // Método que añade un listener al select de zona de entrega para actualizar el costo de envío.
+  // Añade un listener al select de zona de entrega para actualizar el costo de envío dinámicamente
   costoDeEnvio() {
     const zonaDeEntregaSelect = document.querySelector('#zonaDeEntrega');
     const costoEnvioText = document.querySelector('#productInCartShippingCost');
-    
+    costoEnvioText.textContent = "";
     if (!zonaDeEntregaSelect || !costoEnvioText) {
       console.error('No se encontraron los elementos para actualizar el costo de envío.');
       return;
