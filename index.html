@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../assets/css/reset.css"> -->
     <link rel="shortcut icon" href="./assets/images/logo/header_logo_1.webp" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/main.css">
     <script src="https://kit.fontawesome.com/72fb91e857.js" crossorigin="anonymous"></script>
@@ -99,12 +98,11 @@
     <article class="shopping-card__sidebar cart-hidden">
         <div class="product-in-cart__card-container">
             <!-- productCartItem component -->
-
         </div>
-        <form action="includes/procesar__pedido.php" method="post" class="product-in-cart__form cart-form__hidden">
+        <form id="orderForm" class="product-in-cart__form cart-form__hidden">
             <input type="text" name="userName" id="userName" placeholder="Nombre" required>
             <input type="number" name="usarPhone" id="userPhone" placeholder="Celular" required>
-            <select name="paymentMethod" id="paymentMethod" aria-label="Metodo de pago" title="Metodo de pago" required>
+            <select name="paymentMethod" id="paymentMethod" title="Metodo de pago" required>
                     <option value="">Metodo de pago</option>
                     <option value="efectivo">Efectivo</option>
                     <option value="mercadoPago">Mercado Pago</option>
@@ -115,35 +113,34 @@
                     <option value="tarjetaCredito">Tarjeta de crédito</option>
                     <option value="tarjetaDebido">Tarjeta de debito</option>
             </select>
-            <select name="retiroMethod" id="retiroMethod" title="Metoro de retiro" aria-label="Metodo de retiro" required>
-                    <option value="">Envio/Retiro</option>
-                    <option value="retiroEnPersona">Retiro en persona</option>
-                    <option value="enviar">Quiero que me lo envien</option>
+            <select name="retiroMethod" id="retiroMethod" title="Metodo de retiro" required>
+                <option value="">Envío/Retiro</option>
+                <option value="retiroEnPersona">Retiro en persona</option>
+                <option value="enviar">Quiero que me lo envíen</option>
             </select>
-            <!-- only if retiroEnPersona is selected -->
-            <input type="text" name="direccion" id="direccion" title="Direccion a enviar" aria-label="Direccion a enviar" placeholder="Direccion">
-            <!-- <span class="shopping-cart_retiro-info">Calle Varela Y Eva Peron, Flores. CABA</span> -->
-            <select name="zonaDeEntrega" id="zonaDeEntrega" title="Zona de entrega" aria-label="Zona de entrega" placeholder="Zona de entrega">
-                    <option value>Zona de entrega</option>
-                    <option value="2000" name="claypole">Claypole $2000</option>
-                    <option value="1500" name="avellaneda">Avellaneda $1500</option>
-                    <option value="1500" name="lanus">Lanús $1500</option>
-                    <option value="1800" name="quilmes">Quilmes $1800</option>
-                    <option value="1700" name="lomasDeZamora">Lomas de Zamora $1700</option>
-                    <option value="1600" name="sanMartin">San Martín $1600</option>
-                    <option value="1600" name="moron">Morón $1600</option>
-                    <option value="2000" name="tigre">Tigre $2000</option>
-                    <option value="1900" name="sanIsidro">San Isidro $1900</option>
-                    <option value="1800" name="vicenteLopez">Vicente López $1800</option>
+            <input type="text" name="direccion" id="direccion" placeholder="Dirección">
+            <select name="zonaDeEntrega" id="zonaDeEntrega" title="Zona de entrega">
+                <option value="">Zona de entrega</option>
+                <option value="0">No sale mi zona</option>
+                <option value="2000" name="claypole">Claypole $2000</option>
+                <option value="1500" name="avellaneda">Avellaneda $1500</option>
+                <option value="1500" name="lanus">Lanús $1500</option>
+                <option value="1800" name="quilmes">Quilmes $1800</option>
+                <option value="1700" name="lomasDeZamora">Lomas de Zamora $1700</option>
+                <option value="1600" name="sanMartin">San Martín $1600</option>
+                <option value="1600" name="moron">Morón $1600</option>
+                <option value="2000" name="tigre">Tigre $2000</option>
+                <option value="1900" name="sanIsidro">San Isidro $1900</option>
+                <option value="1800" name="vicenteLopez">Vicente López $1800</option>
             </select>
-            <textarea name="nota" id="notaTextarea" placeholder="¿Alguna observación?"></textarea>
+            <textarea name="nota" id="notaTextarea" placeholder="¿Algún comentario?"></textarea>
         </form>
         <div class="product-in-cart__info cart-info__hidden">
-            <p>Item(s): <span id="productInCartTotalItems">0</span></p>
-            <p aria-label="Costo sin envio">Total: <span id="productInCartSubNetworth">$1000</span></p>
+            <p>Item(s): <span id="productInCartTotalItems" class="cart-amount position-static">0</span></p>
+            <p aria-label="Costo sin envio">Total: <span id="productInCartSubNetworth" class="cart-total">$1000</span></p>
             <p aria-label="Costo de envio">Costo de envio: <span id="productInCartShippingCost">$1000</span></p>
             <p aria-label="Costo Neto">Costo final: <span id="productInCartNetworth">$1000</span></p>
-            <button type="submit" name="procesarPedido" title="enviar pedido" class="product-in-cart__btn-procesar" aria-label="Enviar pedido" onclick="procesarPedido()">Enviar Pedido</button>
+            <button type="submit" form="orderForm" name="procesarPedido" title="enviar pedido" class="product-in-cart__btn-procesar" aria-label="Enviar pedido">Enviar Pedido</button>
         </div>
     </article>
 
@@ -240,6 +237,7 @@
 <script type="module" src="./assets/js/components/EmptyCartMessage.js"></script>
 <script type="module" src="./assets/js/toggleCart.js"></script>
 <script type="module" src="./assets/js/shoppingCartSidebar.js"></script>
+<script type="module" src="./assets/js/orderFormManager.js"></script>
 
 </body>
 </html>

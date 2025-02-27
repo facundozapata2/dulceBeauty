@@ -54,7 +54,7 @@ button, input, select, optgroup, option, textarea{
 }
 
 .wrapper{
-    width: clamp(300px, 100%, 900px);
+    width: clamp(320px, 100%, 900px);
     background: var(--white);
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, .333);
 }
@@ -384,12 +384,12 @@ h1{
 }
 
 .cart-hidden{
-    transform: translateX(100%); /* Oculta completamente el carrito */
+    transform: translateX(100%); 
     box-shadow: none;
 }
 
 .cart-open{
-    transform: translateX(0); /* Muestra el carrito */
+    transform: translateX(0); 
 }
 
 .cart-open, .cart-hidden{
@@ -402,7 +402,7 @@ h1{
     grid-auto-rows: 1fr;
     place-items: center;
     gap: .5rem;
-    margin-top: .5rem;
+    /* margin-top: .5rem; */
 }
 
 .product-item-cart__card{
@@ -481,22 +481,6 @@ h1{
     color: var(--white);
 }
 
-/* *{outline: 1px solid #f00;} */
-
-/* .product-in-cart__card-container img{
-    width: 4rem;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: .5rem;
-    transition: transform .3s ease-in-out;
-} */
-
-/* shopping sidebar <form> styles */
-
-/* default hidden form */
-
-
-
 .product-in-cart__form{
     display: grid;
     grid-template-columns: 1fr;
@@ -504,7 +488,6 @@ h1{
     place-items: start;
     gap: .5rem;
     margin-top: .5rem;
-    /* width: clamp(calc(300px - 2rem), calc(100% - 2rem), calc(400px - 2rem)); */
 }
 
 .product-in-cart__form input,
@@ -529,12 +512,19 @@ h1{
 
 .product-in-cart__form textarea{
     resize: none;
+    height: calc(fit-content + 1rem);
+    max-height: 4rem;
 }
 
 @supports (field-sizing: content){
     .product-in-cart__form textarea{
         field-sizing: content;
     }
+}
+
+select[name="zonaDeEntrega"],
+input[name="direccion"]{
+    display: none;
 }
 
 .product-in-cart__info{
@@ -568,6 +558,18 @@ h1{
     width: fit-content;
     transition: box-shadow .3s ease-in-out, transform .3s ease-in-out;
 }
+/* inherit para que herede los mismos estilos que los demas <p>, <span> */
+.position-static {
+    position: static;
+    color: inherit;
+    background: inherit;
+    font-size: inherit;
+    /* el padre (<p>) tiene un font weight de 500 por lo que al darle inherit hereda 500 y no 600 como se necesita */
+    font-weight: 600;
+    padding: inherit;
+    border-radius: inherit;
+    width: inherit;
+}
 
 .product-in-cart__info button:hover,
 .product-in-cart__info button:active{
@@ -580,7 +582,6 @@ h1{
 .cart-info__hidden {
   display: none;
 }
-
 
 /* opening-hours */
 .opening-hours{
@@ -698,7 +699,7 @@ h1{
 .footer-brand{
     display: flex;
     align-items: center;
-    gap: .5rem;
+    text-align: center;
 }
 
 .footer-brand img{

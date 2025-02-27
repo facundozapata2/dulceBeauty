@@ -8,35 +8,12 @@ export class ShoppingCartSidebar {
     this.sidebar = document.querySelector(sidebarSelector);
   }
   
-  // Este método actualiza el contenedor del carrito con los ítems actuales
-  actualizarContenido() {
-    const contenedor = this.sidebar.querySelector('.product-in-cart__card-container');
-    contenedor.innerHTML = ''; // Limpiar contenido previo
-
-    // Si el carrito está vacío, muestra el mensaje de carrito vacío
-    if (this.carritoManager.carrito.length === 0) {
-      contenedor.appendChild(new EmptyCartMessage().render());
-    } else {
-      // Por cada producto en el carrito, crea un componente que muestre la misma información que en main-productos
-      this.carritoManager.carrito.forEach(item => {
-        const productCartItem = new ProductCartItem(item, this.carritoManager);
-        // Se asume que ProductCartItem.render() retorna un nodo HTML con la plantilla deseada
-        contenedor.appendChild(productCartItem.render());
-      });
-    }
-    // Mostrar u ocultar el formulario y la info según la cantidad de productos en el carrito
-    this.mostrarFormulario();
-  }
-
-  // Función que muestra/oculta el nodo del formulario y el div .product-in-cart__info
+  // Método que muestra u oculta el formulario y la información del carrito según si hay o no productos.
   mostrarFormulario() {
-    // Usamos el sidebar para buscar los elementos correspondientes
     const formulario = this.sidebar.querySelector('.product-in-cart__form');
     const info = this.sidebar.querySelector('.product-in-cart__info');
-
-    // Si no se encuentran los nodos, no se hace nada
     if (!formulario || !info) return;
-
+    
     if (this.carritoManager.carrito.length === 0) {
       formulario.classList.add('cart-form__hidden');
       info.classList.add('cart-info__hidden');
@@ -45,23 +22,66 @@ export class ShoppingCartSidebar {
       info.classList.remove('cart-info__hidden');
     }
   }
-
-  // Este método actualiza los totales mostrados en el sidebar y en el header
+  
+  // Método que actualiza el contenedor de las cards del carrito.
+  actualizarContenido() {
+    const contenedor = this.sidebar.querySelector('.product-in-cart__card-container');
+    if (!contenedor) return;
+    contenedor.innerHTML = ''; // Limpia el contenedor
+  
+    if (this.carritoManager.carrito.length === 0) {
+      // Si el carrito está vacío, muestra el mensaje vacío.
+      contenedor.appendChild(new EmptyCartMessage().render());
+    } else {
+      // Por cada producto en el carrito, crea el componente del producto en el carrito.
+      this.carritoManager.carrito.forEach(item => {
+        const productCartItem = new ProductCartItem(item, this.carritoManager);
+        contenedor.appendChild(productCartItem.render());
+      });
+    }
+    
+    // Después de actualizar las cards, se muestra u oculta el formulario y la info.
+    this.mostrarFormulario();
+  }
+  
+  // Método que actualiza los totales (total y cantidad) en el sidebar y en el header.
   actualizarTotales() {
-    const totalItemsElement = document.querySelector('#productInCartTotalItems');
-    if (totalItemsElement) {
-      totalItemsElement.textContent = this.carritoManager.getTotalItems();
+    const totalElements = document.getElementsByClassName('cart-total');
+    const cartAmountElements = document.getElementsByClassName('cart-amount');
+    const totalNeto = `$${this.carritoManager.getTotalNeto()}`;
+    const totalItems = `${this.carritoManager.getTotalItems()}`;
+    Array.from(totalElements).forEach(element => {
+      element.textContent = totalNeto;
+    });
+    Array.from(cartAmountElements).forEach(element => {
+      element.textContent = totalItems;
+    });
+  }
+  
+  // Método que añade un listener al select de zona de entrega para actualizar el costo de envío.
+  costoDeEnvio() {
+    const zonaDeEntregaSelect = document.querySelector('#zonaDeEntrega');
+    const costoEnvioText = document.querySelector('#productInCartShippingCost');
+    
+    if (!zonaDeEntregaSelect || !costoEnvioText) {
+      console.error('No se encontraron los elementos para actualizar el costo de envío.');
+      return;
     }
     
-    const netWorthElement = document.querySelector('#productInCartNetworth');
-    if (netWorthElement) {
-      netWorthElement.textContent = `$${this.carritoManager.getTotalNeto()}`;
-    }
+    console.log("costoDeEnvio: Listener agregado a #zonaDeEntrega");
     
-    // Actualizar el total en el header (se usa la clase .cart-amount)
-    const cartAmountElement = document.querySelector('.cart-amount');
-    if (cartAmountElement) {
-      cartAmountElement.textContent = `${this.carritoManager.getTotalItems()}`;
-    }
+    zonaDeEntregaSelect.addEventListener('change', () => {
+      const selectedOption = zonaDeEntregaSelect.options[zonaDeEntregaSelect.selectedIndex];
+      const costoEnvioValue = selectedOption.value;
+      console.log("Valor seleccionado en zonaDeEntrega:", costoEnvioValue);
+      
+      if (costoEnvioValue === "0") {
+        costoEnvioText.textContent = "Pon tu zona en comentarios";
+      } else if (costoEnvioValue === "") {
+        costoEnvioText.textContent = "";
+      } else {
+        costoEnvioText.textContent = `$${costoEnvioValue}`;
+      }
+    });
   }
 }

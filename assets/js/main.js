@@ -3,38 +3,51 @@ import { CartManager } from './cartManager.js';
 import { ProductFilter } from './productFilter.js';
 import { toggleCart } from './toggleCart.js';
 import { ShoppingCartSidebar } from './shoppingCartSidebar.js';
+import { OrderForm } from './orderFormManager.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Inicializa el gestor del carrito
+    // 🔹 Inicializa el gestor del carrito
     const cartManager = new CartManager();
-    // Inicializa el filtrado y renderizado de productos en la sección principal
+    
+    // 🔹 Inicializa el filtrado y renderizado de productos en la sección principal
     const productFilter = new ProductFilter(cartManager);
-    // Inicializa el sidebar del carrito
+    
+    // 🔹 Inicializa el sidebar del carrito
     const shoppingCartSidebar = new ShoppingCartSidebar(cartManager);
     
-    // Carga los productos y configura la búsqueda/filtros
+    // 🔹 Inicializa el formulario del pedido
+    const orderForm = new OrderForm(cartManager); // 🚀 Ahora sí está instanciado
+    
+    // 🔹 Carga los productos y configura la búsqueda/filtros
     await productFilter.init();
     
-    // Configura el toggle para mostrar/ocultar el carrito
+    // 🔹 Configura el toggle para mostrar/ocultar el carrito
     toggleCart();
 
-    // Actualiza el contenido del carrito en el sidebar al cargar el DOM
+    // 🔹 Actualiza el contenido del carrito en el sidebar al cargar el DOM
     shoppingCartSidebar.actualizarContenido();
     shoppingCartSidebar.actualizarTotales();
+    shoppingCartSidebar.costoDeEnvio(); // 🚀 Asegura que el select de envío tenga el listener activo
     
-    // Escucha el evento personalizado "actualizarCarrito"
+    // 🔹 Escucha el evento personalizado "actualizarCarrito"
     document.addEventListener('actualizarCarrito', () => {
-      // Actualizar el contador de ítems en el header
+      // 📌 Actualizar el contador de ítems en el header
       const cartAmountElement = document.querySelector('.cart-amount');
       if (cartAmountElement) {
-         cartAmountElement.textContent = cartManager.getTotalItems();
+        cartAmountElement.textContent = cartManager.getTotalItems();
       }
-      // Actualizar el contenido del carrito en el sidebar
+      
+      // 📌 Actualizar el contenido del carrito en el sidebar
       shoppingCartSidebar.actualizarContenido();
-      // Actualizar los totales (subtotales, costos, etc.) en el sidebar
+      
+      // 📌 Actualizar los totales (subtotales, costos, etc.) en el sidebar
       shoppingCartSidebar.actualizarTotales();
+
+      // 📌 Vuelve a asegurar que el costo de envío se actualice al cambiar la selección
+      shoppingCartSidebar.costoDeEnvio();
     });
+
   } catch (error) {
     console.error('Error inicial:', error);
     document.getElementById('productItemContainer').innerHTML = `
