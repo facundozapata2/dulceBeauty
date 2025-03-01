@@ -516,9 +516,6 @@ h1{
 }
 
 /* transiciones cuando seleccionamos segund option.value = ('enviar') */
-/* #direccion,
-#zonaDeEntrega,
-#productInCartShippingCost  */
 select[name="zonaDeEntrega"],
 input[name="direccion"],
 #productInCartShippingCost{
@@ -526,7 +523,7 @@ input[name="direccion"],
   max-height: 0;
   visibility: hidden;
   overflow: hidden;
-  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out, visibility 0.3s ease;
+  transition: all .3s ease-in-out;
   margin: 0;
   padding: 0;
   border: none;
@@ -536,7 +533,7 @@ input[name="direccion"],
 }
 
 select[name="zonaDeEntrega"].visible-delivery,
-input[type="direccion"].visible-delivery {
+input[name="direccion"].visible-delivery {
     opacity: 1;
     max-height: 28px;
     height: unset;
