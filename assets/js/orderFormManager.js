@@ -1,3 +1,4 @@
+// orderFormManager.js
 export class OrderForm {
   constructor(cartManager) {
     this.cartManager = cartManager;
@@ -7,6 +8,7 @@ export class OrderForm {
   }
 
   setupEventListeners() {
+    // submit fuera del <form>
     this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
     const retiroSelect = this.form.querySelector('#retiroMethod');
@@ -14,62 +16,63 @@ export class OrderForm {
     const zona = this.form.querySelector('#zonaDeEntrega');
     const costoEnvioText = document.querySelector('#productInCartShippingCost');
 
-    // Manejar visibilidad campos envío
     retiroSelect.addEventListener('change', (e) => {
-      const showFields = e.target.value === 'enviar';
-      direccion.classList.toggle('visible-delivery', showFields);
-      zona.classList.toggle('visible-delivery', showFields);
-      costoEnvioText?.classList.toggle('visible-delivery', showFields);
-      
-      // Resetear valores si se ocultan
-      if (!showFields) {
-        direccion.value = '';
-        zona.value = '';
+      if (e.target.value === 'enviar') {
+        direccion.classList.add('visible-delivery');
+        zona.classList.add('visible-delivery');
+        if (costoEnvioText) costoEnvioText.classList.add('visible-delivery');
+      } else {
+        direccion.classList.remove('visible-delivery');
+        zona.classList.remove('visible-delivery');
+        if (costoEnvioText) costoEnvioText.classList.remove('visible-delivery');
+        const warning = this.form.querySelector('.zona-warning');
+        if (warning) warning.remove();
       }
       document.dispatchEvent(new CustomEvent('actualizarCarrito'));
     });
 
-    // Actualizar costo de envío dinámicamente
-    zona?.addEventListener('change', (e) => {
-      const selectedOption = e.target.options[e.target.selectedIndex];
-      const costoEnvioValue = parseInt(selectedOption.value) || 0;
+    zona.addEventListener('change', (e) => {
+      const selectedOption = zona.options[zona.selectedIndex];
+      const costoEnvioValue = selectedOption.value;
       
-      // Manejar mensaje especial
-      if (costoEnvioValue === 0) {
-        this.mostrarAdvertenciaZona();
-        costoEnvioText.textContent = "Pon tu zona en comentarios";
+      if (costoEnvioValue === "0") {
+        let warning = this.form.querySelector('.zona-warning');
+        if (!warning) {
+          warning = document.createElement('p');
+          warning.className = 'zona-warning';
+          warning.style.color = 'red';
+          warning.style.fontSize = '0.9rem';
+          warning.style.marginTop = '0.5rem';
+          warning.textContent = '¿No sale tu zona? Ponla en Comentarios';
+          zona.parentElement.appendChild(warning);
+        }
       } else {
-        this.removerAdvertenciaZona();
-        costoEnvioText.textContent = `$${costoEnvioValue}`;
+        const warning = this.form.querySelector('.zona-warning');
+        if (warning) warning.remove();
       }
       
+      if (costoEnvioText) {
+        if (costoEnvioValue === "0") {
+          costoEnvioText.textContent = "Pon tu zona en comentarios";
+        } else if (costoEnvioValue === "") {
+          costoEnvioText.textContent = "";
+        } else {
+          costoEnvioText.textContent = `$${costoEnvioValue}`;
+        }
+      }
       document.dispatchEvent(new CustomEvent('actualizarCarrito'));
     });
+
+    const notaTextarea = this.form.querySelector('#notaTextarea');
+    if (notaTextarea) {
+      notaTextarea.placeholder = "¿Algun comentario?";
+    }
 
     this.submitButton.addEventListener("click", (e) => this.handleSubmit(e));
   }
 
-  mostrarAdvertenciaZona() {
-    if (!this.form.querySelector('.zona-warning')) {
-      const warning = document.createElement('p');
-      warning.className = 'zona-warning';
-      warning.style.cssText = `
-        color: var(--red-hot);
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-      `;
-      warning.textContent = '¿No sale tu zona? Ponla en Comentarios';
-      this.form.querySelector('#zonaDeEntrega').parentElement.appendChild(warning);
-    }
-  }
-
-  removerAdvertenciaZona() {
-    const warning = this.form.querySelector('.zona-warning');
-    if (warning) warning.remove();
-  }
-
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); 
     const formData = new FormData(this.form);
     const mensaje = this.generarMensajePedido(formData);
     this.enviarPorWhatsApp(mensaje);
@@ -78,9 +81,8 @@ export class OrderForm {
   generarMensajePedido(formData) {
     let mensaje = '🚀 *NUEVO PEDIDO - DULCE BEAUTY* 🚀\n\n';
     
-    // Datos del cliente (corregido el nombre del campo)
     mensaje += `*Nombre:* ${formData.get('userName')}\n`;
-    mensaje += `*Teléfono:* ${formData.get('userPhone')}\n`; // <- Corregido aquí
+    mensaje += `*Teléfono:* ${formData.get('userPhone')}\n`;
     mensaje += `*Método de pago:* ${formData.get('paymentMethod')}\n`;
     mensaje += `*Retiro/Envío:* ${formData.get('retiroMethod')}\n\n`;
     
@@ -94,10 +96,7 @@ export class OrderForm {
       mensaje += `- ${item.name} x${item.cantidad} ($${item.precioUnitario} c/u)\n`;
     });
     
-    const costoEnvio = parseInt(document.querySelector('#zonaDeEntrega')?.value) || 0;
-    mensaje += `\n*Total productos:* $${this.cartManager.getTotal()}`;
-    mensaje += `\n*Costo envío:* $${costoEnvio}`;
-    mensaje += `\n*Total final:* $${this.cartManager.getTotal() + costoEnvio}\n`;
+    mensaje += `\n*Total productos:* $${this.cartManager.getTotal()}\n`;
     
     if (formData.get('nota')) {
       mensaje += `\n*Comentarios:*\n${formData.get('nota')}`;
@@ -109,5 +108,11 @@ export class OrderForm {
   enviarPorWhatsApp(mensaje) {
     const numeroWhatsApp = '5491151222667';
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+  }
+
+  enviarPorEmail(mensaje) {
+    const emailDestino = 'cliente@example.com';
+    const subject = encodeURIComponent('Nuevo Pedido - Dulce Beauty');
+    window.open(`mailto:${emailDestino}?subject=${subject}&body=${mensaje}`, '_blank');
   }
 }

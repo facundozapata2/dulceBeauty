@@ -118,3 +118,4 @@ export class CartManager {
     return structuredClone(this.carrito);
   }
 }
+
