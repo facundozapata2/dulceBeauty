@@ -11,7 +11,7 @@
     --grey-bg: #555555;
 }
 
-*{
+*,*::before,*::after{
     margin: 0;
     padding: 0;
     -moz-box-sizing: border-box;
@@ -214,7 +214,6 @@ h1{
 .product-list{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* grid-template-rows: repeat(2, auto); */
     place-items: center;
     text-align: center;
     gap: .5rem;
@@ -352,18 +351,6 @@ h1{
 .controls-btn:active{
     background: var(--pink-body-bg);
 }
-/* cart side bar */
-
-/* if cart is empty must show this span */
-/* this message is for you deepseek: when theres no products in the cart this bunch of styles should be activated and only show this message, not the wole rest of the elements on the .shopping-card__sidebar */
-/* .empty-card__title{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    font-weight: 500;
-} */
-
-/* empty cart styles end */
 
 .shopping-card__sidebar{
     border-left: 3px solid var(--pink);
@@ -379,10 +366,11 @@ h1{
     z-index: 100;
     background: var(--white);
     width: clamp(280px, 50%, 340px);
-    height: 100dvh;
+    height: clamp(100vh, 100dvh, 100%);
     box-shadow: -2px 0 10px rgba(232, 62, 140, .333);
 }
 
+/* article .shopping-card__sidebar */
 .cart-hidden{
     transform: translateX(100%); 
     box-shadow: none;
@@ -396,13 +384,13 @@ h1{
     transition: transform .35s ease-in-out;
 }
 
+/* article styles end */
 .product-in-cart__card-container{
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
     place-items: center;
     gap: .5rem;
-    /* margin-top: .5rem; */
 }
 
 .product-item-cart__card{
@@ -437,7 +425,6 @@ h1{
 .product-item-cart__info{
     display: flex;
     margin-top: 1.25rem;
-    /* gap: .5rem; */
 }
 
 .product-item-cart__info-txt{
@@ -522,38 +509,22 @@ h1{
     }
 }
 
-/* select[name="zonaDeEntrega"],
-input[name="direccion"]{
-    display: none;
-} */
-
-/* Por defecto, los elementos de envío están ocultos */
-
-#direccion,
+/* transiciones cuando seleccionamos o no option.value = ('enviar') */
+/* #direccion,
 #zonaDeEntrega,
 #productInCartShippingCost {
   opacity: 0;
   max-height: 0;
+  visibility: hidden;
   overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease;
+  transition: opacity 0.3s ease, max-height 0.3s ease, visibility 0.3s ease;
 }
 
 .visible-delivery {
   opacity: 1;
-  max-height: fit-content; /* Ajusta según el contenido */
-}
-
-
-
-.product-in-cart__info{
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 1rem 0;
-    gap: .5rem;
-    background: var(--pink-body-bg);
-    padding: .5rem;
-    border-radius: .5rem;
-}
+  max-height: 200px;
+  visibility: visible;
+} */
 
 .product-in-cart__info p{
     background: #ebebeb;
@@ -567,15 +538,25 @@ input[name="direccion"]{
 }
 
 .product-in-cart__info button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 600;
-    display: block;
     background: var(--pink);
     margin: .5rem auto;
-    padding: .5rem;
+    /* padding: .5rem; */
     border-radius: .5rem;
-    width: fit-content;
+    width: 80%;
+    font-size: 1rem;
     transition: box-shadow .3s ease-in-out, transform .3s ease-in-out;
 }
+
+.product-in-cart__info i{
+    font-size: 1.5rem;
+    color: #24c560;
+    padding: .5rem;
+}
+
 /* inherit para que herede los mismos estilos que los demas <p>, <span> */
 .position-static {
     position: static;
@@ -595,24 +576,19 @@ input[name="direccion"]{
     transform: scale(1.1);
 }
 
-
 /* Estado por defecto: oculto con opacidad 0 y desplazado */
-.product-in-cart__form,
 .product-in-cart__info {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;  /* Evita que se interactúe cuando está oculto */
+  pointer-events: none;
 }
 
-/* Estado visible: opacidad 1 y posición normal */
-.product-in-cart__form.visible,
 .product-in-cart__info.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-
 
 /* opening-hours */
 .opening-hours{
@@ -669,7 +645,7 @@ input[name="direccion"]{
     width: clamp(300px, 100%, 900px);
     gap: 1rem;
     padding: 1rem;
-    background: #F2F2F2;
+    background: var(--white);
 }
 
 .services-card{
@@ -731,6 +707,7 @@ input[name="direccion"]{
     display: flex;
     align-items: center;
     text-align: center;
+    gap: 1rem;
 }
 
 .footer-brand img{
@@ -800,8 +777,6 @@ input[name="direccion"]{
     color:  rgb(24, 235, 101);
     transform: scale(1.225);
 }
-
-/* feedback0 */
 
 /* Feedback visual */
 .feedback {
