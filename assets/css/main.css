@@ -27,8 +27,6 @@
     --transition-short: .3s ease-in-out;
     --scale-sm: scale(1.05);
     --scale-m: scale(1.25);
-    
-
 }
 
 *,*::before,*::after{
