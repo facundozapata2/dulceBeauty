@@ -561,10 +561,10 @@ input[name="direccion"].visible-delivery {
     padding: 1rem .5rem;
     background: var(--pink-body-bg);
     border-radius: .5rem;
-    width: 100%;
+    width: 100%;    
     margin-bottom: .5rem;
     color: var(--grey-bg);
-}
+}   
 
 .product-in-cart__info p{
     background: #ebebeb;
