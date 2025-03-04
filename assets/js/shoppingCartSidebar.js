@@ -13,6 +13,7 @@ export class ShoppingCartSidebar {
     
     if (this.carritoManager.carrito.length === 0) {
       contenedor.appendChild(new EmptyCartMessage().render());
+      
     } else {
       this.carritoManager.carrito.forEach(item => {
         contenedor.appendChild(new ProductCartItem(item, this.carritoManager).render());
@@ -48,11 +49,12 @@ export class ShoppingCartSidebar {
     const info = this.sidebar.querySelector('.product-in-cart__info');
     
     if (this.carritoManager.carrito.length > 0) {
-      formulario?.classList.add('visible');
-      info?.classList.add('visible');
+      formulario?.classList.remove('cart-form__hidden');
+      info?.classList.remove('cart-info__hidden');
     } else {
-      formulario?.classList.remove('visible');
-      info?.classList.remove('visible');
+        
+      formulario?.classList.add('cart-form__hidden');
+      info?.classList.add('cart-info__hidden');
     }
   }
 }

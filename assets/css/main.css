@@ -615,6 +615,11 @@ input[name="direccion"].visible-delivery {
     width: inherit;
 }
 
+.cart-form__hidden,
+.cart-info__hidden{
+    display: none;
+}
+
 /* opening-hours */
 .opening-hours{
     position: relative;
