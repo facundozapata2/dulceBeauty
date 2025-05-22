@@ -383,7 +383,8 @@ h1{
     z-index: 100;
     background: var(--white);
     width: clamp(280px, 50%, 340px);
-    height: clamp(100vh, 100dvh, 100%);
+    /* height: clamp(100vh, 100dvh, 100%); */
+    height: clamp(100%, 100dvh, 100vh);
     box-shadow: -2px 0 10px var(--shadow-pink);
 }
 
